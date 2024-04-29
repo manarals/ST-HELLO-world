@@ -23,7 +23,7 @@ def handle_user_input(user_input):
         st.write("2. What is Diabetic Retinopathy")
         st.write("3. What are the stages of Diabetic Retinopathy")
     elif user_input == "1":
-        st.write("MoqlatAI is an AI-powered website that utilizes advanced deep learning algorithms to detect Diabetic Retinopathy.\n\n **Mission:** \n"
+        st.write("**MoqlatAI** is an AI-powered website that utilizes advanced deep learning algorithms to detect Diabetic Retinopathy.\n\n **Mission:** \n"
           "Our mission is to contribute to Saudi Arabia's Vision 2030 by integrating technology into the healthcare sector, driving societal transformational success,"
           "that allows you to flex and grow your business with the best solutions.\n\n **Vision:** \n Our vision is to empower healthcare professionals with advanced disease detection tools, ensuring exceptional patient care"
           "and well-being.")
@@ -33,10 +33,10 @@ def handle_user_input(user_input):
         
     elif user_input == "3":
         st.write("1- **Normal Retina:** In a healthy retina, the blood vessels are typically well-formed and function properly to supply oxygen and nutrients to the retinal tissue. There are no signs of swelling, leakage, or abnormal growth of blood vessels. The macula, the central part of the retina responsible for central vision, is flat and thin, allowing for clear vision.\n"
-          "2- **Mild Nonproliferative Retinopathy:** The first stage of diabetic retinopathy involves the development of small areas of swelling in the retinal blood vessels, known as microaneurysms. These microaneurysms may cause minor leakage of fluid into the retina, leading to mild retinal swelling.\n"
-          "3- **Moderate Nonproliferative Retinopathy:** As the disease progresses, more blood vessels may become blocked, resulting in areas of the retina being deprived of oxygen (ischemia). This stage is characterized by a greater extent of retinal damage compared to mild nonproliferative retinopathy.\n"
-          "4- **Severe Nonproliferative Retinopathy:** In this stage, a significant number of retinal blood vessels are blocked, leading to widespread ischemia in the retina. The lack of oxygen triggers the growth of new, abnormal blood vessels (neovascularization), which marks the transition to the proliferative stage.\n"
-          "5- **Proliferative Retinopathy:** This advanced stage is characterized by the growth of abnormal blood vessels into the vitreous, which is the gel-like substance filling the center of the eye. These fragile blood vessels are prone to bleeding, causing vitreous hemorrhage and potentially leading to sudden vision loss.")
+          "\n\n2- **Mild Nonproliferative Retinopathy:** The first stage of diabetic retinopathy involves the development of small areas of swelling in the retinal blood vessels, known as microaneurysms. These microaneurysms may cause minor leakage of fluid into the retina, leading to mild retinal swelling.\n"
+          "\n\n3- **Moderate Nonproliferative Retinopathy:** As the disease progresses, more blood vessels may become blocked, resulting in areas of the retina being deprived of oxygen (ischemia). This stage is characterized by a greater extent of retinal damage compared to mild nonproliferative retinopathy.\n"
+          "\n\n4- **Severe Nonproliferative Retinopathy:** In this stage, a significant number of retinal blood vessels are blocked, leading to widespread ischemia in the retina. The lack of oxygen triggers the growth of new, abnormal blood vessels (neovascularization), which marks the transition to the proliferative stage.\n"
+          "\n\n5- **Proliferative Retinopathy:** This advanced stage is characterized by the growth of abnormal blood vessels into the vitreous, which is the gel-like substance filling the center of the eye. These fragile blood vessels are prone to bleeding, causing vitreous hemorrhage and potentially leading to sudden vision loss.")
     else:
         st.write("Stay safe!")
 
@@ -53,7 +53,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # Accept user input
-if prompt := st.chat_input("What's up?"):
+if prompt := st.chat_input("Hi, human! Is there anything I can help you with?"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container
