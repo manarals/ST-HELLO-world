@@ -9,6 +9,7 @@ qa_pairs = {
 }
 
 def get_answer(question):
+    question = str(question)  # Convert to string
     for key in qa_pairs.keys():
         if question.lower() in key.lower():
             return qa_pairs[key]
@@ -27,5 +28,4 @@ def main():
     # Display the answer to the user
     st.success(f"Answer: {answer}")
 
-if __name__ == "__main__":
-    main()
+main()
