@@ -30,20 +30,19 @@ def handle_user_input(user_input):
                 st.write("Invalid choice. Please try again.")
         
         if choice == "1":
-            st.write("MoqlatAI is an AI-powered website that utilizes advanced deep learning algorithms to detect Diabetic Retinopathy.\n\n **Mission:** \n
-            Our mission is to contribute to Saudi Arabia's Vision 2030 by integrating technology into the healthcare sector, driving societal transformational success,
-            that allows you to flex and grow your business with the best solutions.\n\n **Vision:** \n Our vision is to empower healthcare professionals with advanced disease detection tools, ensuring exceptional patient care
-            and well-being.  ")
+            st.write("MoqlatAI is an AI-powered website that utilizes advanced deep learning algorithms to detect Diabetic Retinopathy.\n\n **Mission:** \n"
+          "Our mission is to contribute to Saudi Arabia's Vision 2030 by integrating technology into the healthcare sector, driving societal transformational success,"
+          "that allows you to flex and grow your business with the best solutions.\n\n **Vision:** \n Our vision is to empower healthcare professionals with advanced disease detection tools, ensuring exceptional patient care"
+          "and well-being.")
         elif choice == "2":
-            st.write("**Diabetic retinopathy** is a diabetes complication that affects the eyes. It's caused by damage to the blood vessels of the light-sensitive tissue at the back of the eye (retina).
-            In some cases, diabetic retinopathy can progress to a severe stage where it causes vision loss or even blindness.\n Regular eye exams and managing blood sugar levels are essential for preventing and managing diabetic retinopathy.
- ")
+            st.write("**Diabetic retinopathy** is a diabetes complication that affects the eyes. It's caused by damage to the blood vessels of the light-sensitive tissue at the back of the eye (retina)."
+          " In some cases, diabetic retinopathy can progress to a severe stage where it causes vision loss or even blindness.\n Regular eye exams and managing blood sugar levels are essential for preventing and managing diabetic retinopathy.")
         elif choice == "3":
-            st.write("1- **Normal Retina:** In a healthy retina, the blood vessels are typically well-formed and function properly to supply oxygen and nutrients to the retinal tissue. There are no signs of swelling, leakage, or abnormal growth of blood vessels. The macula, the central part of the retina responsible for central vision, is flat and thin, allowing for clear vision.
-\n2- **Mild Nonproliferative Retinopathy:** The first stage of diabetic retinopathy involves the development of small areas of swelling in the retinal blood vessels, known as microaneurysms. These microaneurysms may cause minor leakage of fluid into the retina, leading to mild retinal swelling.
-\n3- **Moderate Nonproliferative Retinopathy:** As the disease progresses, more blood vessels may become blocked, resulting in areas of the retina being deprived of oxygen (ischemia). This stage is characterized by a greater extent of retinal damage compared to mild nonproliferative retinopathy.
-\n4- **Severe Nonproliferative Retinopathy:** In this stage, a significant number of retinal blood vessels are blocked, leading to widespread ischemia in the retina. The lack of oxygen triggers the growth of new, abnormal blood vessels (neovascularization), which marks the transition to the proliferative stage.
-\n5- **Proliferative Retinopathy:** This advanced stage is characterized by the growth of abnormal blood vessels into the vitreous, which is the gel-like substance filling the center of the eye. These fragile blood vessels are prone to bleeding, causing vitreous hemorrhage and potentially leading to sudden vision loss.")
+            st.write("1- **Normal Retina:** In a healthy retina, the blood vessels are typically well-formed and function properly to supply oxygen and nutrients to the retinal tissue. There are no signs of swelling, leakage, or abnormal growth of blood vessels. The macula, the central part of the retina responsible for central vision, is flat and thin, allowing for clear vision.\n"
+          "2- **Mild Nonproliferative Retinopathy:** The first stage of diabetic retinopathy involves the development of small areas of swelling in the retinal blood vessels, known as microaneurysms. These microaneurysms may cause minor leakage of fluid into the retina, leading to mild retinal swelling.\n"
+          "3- **Moderate Nonproliferative Retinopathy:** As the disease progresses, more blood vessels may become blocked, resulting in areas of the retina being deprived of oxygen (ischemia). This stage is characterized by a greater extent of retinal damage compared to mild nonproliferative retinopathy.\n"
+          "4- **Severe Nonproliferative Retinopathy:** In this stage, a significant number of retinal blood vessels are blocked, leading to widespread ischemia in the retina. The lack of oxygen triggers the growth of new, abnormal blood vessels (neovascularization), which marks the transition to the proliferative stage.\n"
+          "5- **Proliferative Retinopathy:** This advanced stage is characterized by the growth of abnormal blood vessels into the vitreous, which is the gel-like substance filling the center of the eye. These fragile blood vessels are prone to bleeding, causing vitreous hemorrhage and potentially leading to sudden vision loss.")
     else:
         st.write("Stay safe!")
         
@@ -59,7 +58,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # Accept user input
-if prompt := st.chat_input("What's up?"):
+if prompt := st.chat_input("Hi, human! Is there anything I can help you with?"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     # Display user message in chat message container
