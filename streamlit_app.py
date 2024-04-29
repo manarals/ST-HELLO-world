@@ -1,21 +1,18 @@
 import streamlit as st
 
-st.write("hello world")
-import streamlit as st
-
 # Predefined questions and answers
 qa_pairs = {
-    "1. How are you?": "I'm good, thank you!",
-    "2. What is your name?": "My name is ChatBot.",
-    "3. How can I help you?": "You can ask me anything.",
+    "How are you?": "I'm good, thank you!",
+    "What is your name?": "My name is ChatBot.",
+    "How can I help you?": "You can ask me anything.",
     # Add more questions and answers as needed
 }
 
 def get_answer(question):
-    if question in qa_pairs:
-        return qa_pairs[question]
-    else:
-        return "I'm sorry, I don't have an answer to that question."
+    for key in qa_pairs.keys():
+        if question.lower() in key.lower():
+            return qa_pairs[key]
+    return "I'm sorry, I don't have an answer to that question."
 
 def main():
     st.title("ChatBot")
@@ -30,4 +27,5 @@ def main():
     # Display the answer to the user
     st.success(f"Answer: {answer}")
 
-main()
+if __name__ == "__main__":
+    main()
