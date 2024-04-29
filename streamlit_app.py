@@ -17,20 +17,35 @@ def response_generator():
 
 
 def handle_user_input(user_input):
-    if user_input.lower() in ["yes", "hi", "please"]:
-        st.write("Please choose a number:")
-        st.write("1. Orange")
-        st.write("2. Apple")
-        st.write("3. Banana")
-    elif user_input == "1":
-        st.write("You chose orange. It's a great choice!")
-    elif user_input == "2":
-        st.write("You chose apple. Excellent!")
-    elif user_input == "3":
-        st.write("You chose banana. Yummy!")
+    if user_input.lower() in ["yes", "hi", "please", "chat", "hello", "salam", "bot"]:
+        while True:
+            st.write("Hello there!\nPlease choose a number so I can assist you...")
+            st.write("1. What is MoqlatAI")
+            st.write("2. What is Diabetic Retinopathy")
+            st.write("3. What are the stages of Diabetic Retinopathy")
+            choice = st.text_input("Enter your choice (1, 2, 3):")
+            if choice in ["1", "2", "3"]:
+                break
+            else:
+                st.write("Invalid choice. Please try again.")
+        
+        if choice == "1":
+            st.write("MoqlatAI is an AI-powered website that utilizes advanced deep learning algorithms to detect Diabetic Retinopathy.\n\n **Mission:** \n
+            Our mission is to contribute to Saudi Arabia's Vision 2030 by integrating technology into the healthcare sector, driving societal transformational success,
+            that allows you to flex and grow your business with the best solutions.\n\n **Vision:** \n Our vision is to empower healthcare professionals with advanced disease detection tools, ensuring exceptional patient care
+            and well-being.  ")
+        elif choice == "2":
+            st.write("**Diabetic retinopathy** is a diabetes complication that affects the eyes. It's caused by damage to the blood vessels of the light-sensitive tissue at the back of the eye (retina).
+            In some cases, diabetic retinopathy can progress to a severe stage where it causes vision loss or even blindness.\n Regular eye exams and managing blood sugar levels are essential for preventing and managing diabetic retinopathy.
+ ")
+        elif choice == "3":
+            st.write("1- **Normal Retina:** In a healthy retina, the blood vessels are typically well-formed and function properly to supply oxygen and nutrients to the retinal tissue. There are no signs of swelling, leakage, or abnormal growth of blood vessels. The macula, the central part of the retina responsible for central vision, is flat and thin, allowing for clear vision.
+\n2- **Mild Nonproliferative Retinopathy:** The first stage of diabetic retinopathy involves the development of small areas of swelling in the retinal blood vessels, known as microaneurysms. These microaneurysms may cause minor leakage of fluid into the retina, leading to mild retinal swelling.
+\n3- **Moderate Nonproliferative Retinopathy:** As the disease progresses, more blood vessels may become blocked, resulting in areas of the retina being deprived of oxygen (ischemia). This stage is characterized by a greater extent of retinal damage compared to mild nonproliferative retinopathy.
+\n4- **Severe Nonproliferative Retinopathy:** In this stage, a significant number of retinal blood vessels are blocked, leading to widespread ischemia in the retina. The lack of oxygen triggers the growth of new, abnormal blood vessels (neovascularization), which marks the transition to the proliferative stage.
+\n5- **Proliferative Retinopathy:** This advanced stage is characterized by the growth of abnormal blood vessels into the vitreous, which is the gel-like substance filling the center of the eye. These fragile blood vessels are prone to bleeding, causing vitreous hemorrhage and potentially leading to sudden vision loss.")
     else:
         st.write("Stay safe!")
-
         
 st.title("Simple chat")
 
