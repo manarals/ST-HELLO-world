@@ -1,47 +1,43 @@
 import streamlit as st
+import random
+import time
 
-# Predefined questions and answers
-qa_pairs = {
-    "How are you?": "I'm good, thank you!",
-    "What is your name?": "My name is ChatBot.",
-    "How can I help you?": "You can ask me anything.",
-    # Add more questions and answers as needed
-}
 
-def get_answer(question):
-    for key in qa_pairs.keys():
-        if question.lower() in key.lower():
-            return qa_pairs[key]
-    return "I'm sorry, I don't have an answer to that question."
+# Streamed response emulator
+def response_generator():
+    response = random.choice(
+        [
+            "Hello there! How can I assist you today?",
+            "Hi, human! Is there anything I can help you with?",
+            "Do you need help?",
+        ]
+    )
+    for word in response.split():
+        yield word + " "
+        time.sleep(0.05)
 
-def main():
-    st.title("ChatBot")
-    st.markdown("### Ask me anything!")
 
-    # Chat interface
-    conversation = st.text_area("Conversation", value="", height=200, key="conversation")
+st.title("Simple chat")
 
-    # User input
-    user_question = st.text_input("User Input")
+# Initialize chat history
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
-    if st.button("Send"):
-        # Append user's question to the conversation
-        conversation += f"\nUser: {user_question}"
+# Display chat messages from history on app rerun
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
 
-        # Get the answer
-        answer = get_answer(user_question)
+# Accept user input
+if prompt := st.chat_input("What is up?"):
+    # Add user message to chat history
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    # Display user message in chat message container
+    with st.chat_message("user"):
+        st.markdown(prompt)
 
-        # Append chatbot's answer to the conversation
-        conversation += f"\nChatBot: {answer}"
-
-        # Clear the user's input
-        user_question = ""
-
-    # Display the updated conversation
-    st.text_area("Conversation", value=conversation, height=200, key="conversation", disabled=True)
-
-    # Display the user input field
-    st.text_input("User Input", value=user_question)
-
-if __name__ == "__main__":
-    main()
+    # Display assistant response in chat message container
+    with st.chat_message("assistant"):
+        response = st.write_stream(response_generator())
+    # Add assistant response to chat history
+    st.session_state.messages.append({"role": "assistant", "content": response})
