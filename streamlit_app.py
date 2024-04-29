@@ -9,7 +9,6 @@ qa_pairs = {
 }
 
 def get_answer(question):
-    question = str(question)  # Convert to string
     for key in qa_pairs.keys():
         if question.lower() in key.lower():
             return qa_pairs[key]
@@ -19,13 +18,14 @@ def main():
     st.title("ChatBot")
     st.markdown("### Ask me anything!")
 
-    # User input
-    user_question = st.chat_input("Enter your question")
+    # Dropdown list of questions
+    selected_question = st.selectbox("Select a question", list(qa_pairs.keys()))
 
     # Get the answer
-    answer = get_answer(user_question)
+    answer = get_answer(selected_question)
 
     # Display the answer to the user
     st.success(f"Answer: {answer}")
 
-main()
+if __name__ == "__main__":
+    main()
