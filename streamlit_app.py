@@ -18,14 +18,30 @@ def main():
     st.title("ChatBot")
     st.markdown("### Ask me anything!")
 
-    # Dropdown list of questions
-    selected_question = st.selectbox("Select a question", list(qa_pairs.keys()))
+    # Chat interface
+    conversation = st.text_area("Conversation", value="", height=200, key="conversation")
 
-    # Get the answer
-    answer = get_answer(selected_question)
+    # User input
+    user_question = st.text_input("User Input")
 
-    # Display the answer to the user
-    st.success(f"Answer: {answer}")
+    if st.button("Send"):
+        # Append user's question to the conversation
+        conversation += f"\nUser: {user_question}"
+
+        # Get the answer
+        answer = get_answer(user_question)
+
+        # Append chatbot's answer to the conversation
+        conversation += f"\nChatBot: {answer}"
+
+        # Clear the user's input
+        user_question = ""
+
+    # Display the updated conversation
+    st.text_area("Conversation", value=conversation, height=200, key="conversation", disabled=True)
+
+    # Display the user input field
+    st.text_input("User Input", value=user_question)
 
 if __name__ == "__main__":
     main()
