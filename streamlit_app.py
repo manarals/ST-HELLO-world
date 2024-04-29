@@ -28,7 +28,7 @@ def handle_user_input(user_input):
                 break
             else:
                 st.write("Invalid choice. Please try again.")
-        
+
         if choice == "1":
             st.write("MoqlatAI is an AI-powered website that utilizes advanced deep learning algorithms to detect Diabetic Retinopathy.\n\n **Mission:** \n"
           "Our mission is to contribute to Saudi Arabia's Vision 2030 by integrating technology into the healthcare sector, driving societal transformational success,"
@@ -42,10 +42,11 @@ def handle_user_input(user_input):
           "2- **Mild Nonproliferative Retinopathy:** The first stage of diabetic retinopathy involves the development of small areas of swelling in the retinal blood vessels, known as microaneurysms. These microaneurysms may cause minor leakage of fluid into the retina, leading to mild retinal swelling.\n"
           "3- **Moderate Nonproliferative Retinopathy:** As the disease progresses, more blood vessels may become blocked, resulting in areas of the retina being deprived of oxygen (ischemia). This stage is characterized by a greater extent of retinal damage compared to mild nonproliferative retinopathy.\n"
           "4- **Severe Nonproliferative Retinopathy:** In this stage, a significant number of retinal blood vessels are blocked, leading to widespread ischemia in the retina. The lack of oxygen triggers the growth of new, abnormal blood vessels (neovascularization), which marks the transition to the proliferative stage.\n"
-          "5- **Proliferative Retinopathy:** This advanced stage is characterized by the growth of abnormal blood vessels into the vitreous, which is the gel-like substance filling the center of the eye. These fragile blood vessels are prone to bleeding, causing vitreous hemorrhage and potentially leading to sudden vision loss.")
+          "5- **Proliferative Retinopathy:** This advanced stage is characterized by the growthof abnormal blood vessels into the vitreous, which is the gel-like substance filling the center of the eye. These fragile blood vessels are prone to bleeding, causing vitreous hemorrhage and potentially leading to sudden vision loss.")
     else:
         st.write("Stay safe!")
-        
+
+
 st.title("Simple chat")
 
 # Initialize chat history
@@ -54,17 +55,23 @@ if "messages" not in st.session_state:
 
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+    role = message["role"]
+    content = message["content"]
+    if role == "user":
+        st.text(f"User: {content}")
+    elif role == "assistant":
+        st.text(f"Assistant: {content}")
 
 # Accept user input
-if prompt := st.chat_input("Hi, human! Is there anything I can help you with?"):
+prompt = st.text_input("Hi, human! Is there anything I can help you with?")
+
+# Handle user input and display assistant response
+if prompt:
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
-    # Display user message in chat message container
-    with st.chat_message("user"):
-        st.markdown(prompt)
 
-    # Handle user input and display assistant response in chat message container
-    with st.chat_message("assistant"):
-        handle_user_input(prompt)
+    # Display user message
+    st.text(f"User: {prompt}")
+
+    # Handle user input and display assistant response
+    handle_user_input(prompt)
